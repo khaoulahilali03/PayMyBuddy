@@ -28,4 +28,12 @@ public class Transaction {
 
     @Column(name = "description")
     private String descritpion;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_iniuser_id")
+    private User iniuser;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_payuser_id")
+    private User payuser;
 }

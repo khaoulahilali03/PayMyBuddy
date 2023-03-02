@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -34,4 +36,16 @@ public class User {
 
     @Column(name = "balance")
     private BigDecimal balance;
+
+    @OneToMany(mappedBy = "iniuser")
+    private List<Transaction> initiatedTransactions = new ArrayList<>();
+
+    @OneToMany(mappedBy = "payuser")
+    private List<Transaction> receivedTransactions = new ArrayList<>();
+
+    @OneToMany(mappedBy = "emitter")
+    private List<Connection> emitterConnections = new ArrayList<>();
+
+    @OneToMany(mappedBy = "receiver")
+    private List<Connection> receiverConnections =new ArrayList<>();
 }
